@@ -1,6 +1,7 @@
 package de.rdk.adressbuch;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import org.apache.log4j.BasicConfigurator;
 
 /**
@@ -12,13 +13,16 @@ public class Main {
     public static void main(String[] args) {
         BasicConfigurator.configure();
         
-        JFrame mainPanel = new JFrame("Adressbuch");
-        mainPanel.setSize(200, 100);
-        mainPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // todo: dispose better option?
+        JFrame mainFrame = new JFrame("Adressbuch");
+        mainFrame.setSize(200, 100);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // todo: dispose better option?
+        JPanel mainPanel = new JPanel();
         
         Presenter presenter = new Presenter();
         presenter.display(mainPanel);
         
-        mainPanel.setVisible(true);
+        mainFrame.add(mainPanel);
+        mainFrame.pack();
+        mainFrame.setVisible(true);
     }
 }

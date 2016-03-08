@@ -40,17 +40,17 @@ public final class TextFieldBinding implements DocumentListener, ObservableValue
 
     private void updateObservable() {
         String newValue = textField.getText();
-        if (!newValue.equals(observable.value())) {
+        if (!newValue.equals(observable.get())) {
             observable.set(newValue);
-            LOGGER.info(String.format("Updated observable to new value \"%s\".", observable.value()));
+            LOGGER.info(String.format("Updated observable to new value \"%s\".", observable.get()));
         }
     }
 
     private void updateTextField() {
-        String newValue = observable.value();
+        String newValue = observable.get();
         if (!textField.getText().equals(newValue)) {
             textField.setText(newValue);
-            LOGGER.info(String.format("Updated textfield to new value \"%s\".", observable.value()));
+            LOGGER.info(String.format("Updated textfield to new value \"%s\".", observable.get()));
         }
     }
 }

@@ -8,14 +8,14 @@ public class ObservableValueNGTest {
     @Test
     public void testValue() {
         ObservableValue<Integer> observable = new ObservableValue<>(4);
-        assertEquals((int)observable.value(), 4);
+        assertEquals((int)observable.get(), 4);
     }
 
     @Test
     public void testSet() {
         ObservableValue<Integer> observable = new ObservableValue<>(4);
         observable.set(8);
-        assertEquals((int)observable.value(), 8);
+        assertEquals((int)observable.get(), 8);
     }
 
     @Test

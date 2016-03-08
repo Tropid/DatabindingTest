@@ -1,28 +1,34 @@
 package de.rdk.adressbuch;
 
+import com.google.common.collect.ImmutableList;
 import de.rdk.databinding.ObservableString;
-import de.rdk.databinding.validator.StringValidator;
-import de.rdk.databinding.validator.TextFieldValidation;
-import de.rdk.databinding.validator.Validation;
-import de.rdk.databinding.validator.ValidatorFactory;
-import java.util.ArrayList;
-import java.util.List;
+import de.rdk.validation.StringValidator;
+import de.rdk.validation.Validator;
+import org.apache.log4j.Logger;
 
 public final class Model {
-    private final ObservableString name;
     
-    private List<TextFieldValidation> validations;
+    private static final Logger LOGGER = Logger.getLogger(Model.class);
+    
+    private final Person person;
     
     public Model() {
-        this.name = new ObservableString();
-        
-        this.validations = new ArrayList<>();
-        
-        StringValidator nameValidator = ValidatorFactory.string().minLength(0).maxLength(10);
-        this.validations.add(Validation.validateTextField(view.name(), nameValidator));
+        this.person = new Person("");
     }
     
-    public ObservableString name() {
-        return this.name;
+    public Person person() {
+        return this.person;
+    }
+    
+    public boolean validate() {
+        StringValidator nameValidator = new StringValidator();
+        nameValidator.maxLength(10);
+        nameValidator.minLength(3);
+        
+        ImmutableList<Validator.Violation> violations = nameValidator.validate(person().name().get());
+        for (Validator.Violation violation : violations) {
+            LOGGER.info(String.format("Constraint Violation: %s", violation.message()));
+        }
+        return violations.isEmpty();
     }
 }

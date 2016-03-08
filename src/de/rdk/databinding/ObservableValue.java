@@ -14,7 +14,7 @@ public class ObservableValue<T> {
         this.changeListener = new ArrayList<>();
     }
     
-    public T value() {
+    public T get() {
         return this.value;
     }
     
