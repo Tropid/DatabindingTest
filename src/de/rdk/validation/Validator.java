@@ -18,8 +18,4 @@ public interface Validator<T> {
             return message;
         }
     }
-    
-    public static Validation validateTextField(JTextField textField, Validator<String> validator) {
-        return new TextFieldValidation(textField, validator);
-    }
 }
