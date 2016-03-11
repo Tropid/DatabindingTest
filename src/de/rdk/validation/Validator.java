@@ -1,7 +1,6 @@
 package de.rdk.validation;
 
 import com.google.common.collect.ImmutableList;
-import javax.swing.JTextField;
 
 public interface Validator<T> {
 
