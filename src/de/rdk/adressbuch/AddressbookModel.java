@@ -1,9 +1,9 @@
 package de.rdk.adressbuch;
 
-public final class Model {
+public final class AddressbookModel {
     private final Person person;
     
-    public Model() {
+    public AddressbookModel() {
         this.person = new Person("");
     }
     

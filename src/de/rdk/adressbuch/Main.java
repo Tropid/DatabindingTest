@@ -1,5 +1,9 @@
 package de.rdk.adressbuch;
 
+import de.rdk.gui.Page;
+import de.rdk.gui.PageManager;
+import de.rdk.gui.mvp.MvpLifecycleCallbacks;
+import de.rdk.gui.mvp.MvpPage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.apache.log4j.BasicConfigurator;
@@ -14,15 +18,14 @@ public class Main {
         BasicConfigurator.configure();
         
         JFrame mainFrame = new JFrame("Adressbuch");
-        mainFrame.setSize(200, 100);
+        mainFrame.setSize(400, 300);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // todo: dispose better option?
         JPanel mainPanel = new JPanel();
         
-        Presenter presenter = new Presenter();
-        presenter.display(mainPanel);
-        
         mainFrame.add(mainPanel);
-        mainFrame.pack();
         mainFrame.setVisible(true);
+        
+        PageManager pageManager = new PageManager(mainFrame, mainPanel);
+        pageManager.transition(new MvpPage(new AddressbookPresenter()));
     }
 }

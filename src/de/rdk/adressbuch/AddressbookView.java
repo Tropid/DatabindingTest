@@ -1,5 +1,6 @@
 package de.rdk.adressbuch;
 
+import de.rdk.gui.mvp.View;
 import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.BoxLayout;
@@ -10,9 +11,8 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.ListCellRenderer;
 
-public final class View {
+public final class AddressbookView implements View {
     private JTextField name;
     private JCheckBox active;
     private JComboBox<Person.Sex> sex;
@@ -55,7 +55,8 @@ public final class View {
         return validate;
     }
 
-    void build(JPanel panel) {
+    @Override
+    public void onCreate(JPanel panel) {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(name());
         panel.add(active());

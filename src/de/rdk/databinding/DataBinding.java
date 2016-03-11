@@ -8,8 +8,8 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import org.apache.log4j.Logger;
 
-public final class Connector {
-    private static final Logger LOGGER = Logger.getLogger(Connector.class);
+public final class DataBinding {
+    private static final Logger LOGGER = Logger.getLogger(DataBinding.class);
     
     public static void connectTextField(JTextField textField, ObservableString observable) {
         TextFieldBinding binding = new TextFieldBinding(textField, observable);
