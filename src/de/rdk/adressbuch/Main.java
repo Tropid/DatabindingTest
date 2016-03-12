@@ -1,11 +1,12 @@
 package de.rdk.adressbuch;
 
-import de.rdk.gui.Page;
 import de.rdk.gui.PageManager;
-import de.rdk.gui.mvp.MvpLifecycleCallbacks;
 import de.rdk.gui.mvp.MvpPage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import org.apache.log4j.BasicConfigurator;
 
 /**
@@ -27,5 +28,13 @@ public class Main {
         
         PageManager pageManager = new PageManager(mainFrame, mainPanel);
         pageManager.transition(new MvpPage(new AddressbookPresenter()));
+        
+        new Thread(() -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+            }
+            SwingUtilities.invokeLater(() -> pageManager.transition(new MvpPage(new CarPresenter())));
+        }).start();
     }
 }
