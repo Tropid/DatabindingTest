@@ -23,7 +23,14 @@ public class ComboboxBinding<E> implements ItemListener, ObservableValue.ChangeL
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        updateObservable((E) combobox.getSelectedItem());
+    	final int selectedIndex = combobox.getSelectedIndex();
+    	
+    	// Remove value from observable if nothing is selected
+    	if (selectedIndex == -1) {
+    		updateObservable(null);
+    	} else {
+    		updateObservable(combobox.getItemAt(selectedIndex));
+    	}
     }
 
     @Override

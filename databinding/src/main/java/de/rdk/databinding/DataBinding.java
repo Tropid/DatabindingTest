@@ -22,7 +22,7 @@ public final class DataBinding {
     }
     
     public static <E> void connectCombobox(JComboBox<E> combobox, ObservableValue<E> observable) {
-        ComboboxBinding binding = new ComboboxBinding(combobox, observable);
+        ComboboxBinding<E> binding = new ComboboxBinding<>(combobox, observable);
         combobox.addItemListener(binding);
         observable.registerChangeListener(binding);
     }
