@@ -1,19 +1,20 @@
 package de.rdk.gui.mvp;
 
-import de.rdk.gui.PageLifecycleCallbacks;
 import javax.swing.JPanel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MvpLifecycleCallbacks<V extends View, P extends Presenter> implements PageLifecycleCallbacks {
+import de.rdk.gui.PageLifecycleCallbacks;
+
+public class MvpLifecycleCallbacks implements PageLifecycleCallbacks {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(MvpLifecycleCallbacks.class);
     
-    private final V view;
-    private final P presenter;
+    private final View view;
+    private final Presenter presenter;
 
-    public MvpLifecycleCallbacks(V view, P presenter) {
+    public MvpLifecycleCallbacks(View view, Presenter presenter) {
         this.view = view;
         this.presenter = presenter;
     }
