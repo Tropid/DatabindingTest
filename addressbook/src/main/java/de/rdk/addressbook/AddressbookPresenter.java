@@ -3,9 +3,6 @@ package de.rdk.addressbook;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import de.rdk.databinding.DataBinding;
 import de.rdk.gui.mvp.Presenter;
 import de.rdk.gui.mvp.View;
@@ -14,7 +11,6 @@ import de.rdk.validation.TextFieldValidation;
 import de.rdk.validation.Validation;
 
 public final class AddressbookPresenter implements Presenter {
-    private final Logger LOGGER = LoggerFactory.getLogger(AddressbookPresenter.class);
     
     private final AddressbookView view;
     private final AddressbookModel model;
