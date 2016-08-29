@@ -14,4 +14,4 @@ nbactions.xml
 .classpath
 .project
 .settings/
-/bin/
+bin/
